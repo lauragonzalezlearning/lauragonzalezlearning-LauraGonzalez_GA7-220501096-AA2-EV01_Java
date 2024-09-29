@@ -4,15 +4,27 @@
  */
 package Formularios;
 
+import java.awt.Image;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Laugo
  */
+
+
+
 public class FormPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form FormPrincipal
      */
+    
+    public File archivoseleccionado;
     public FormPrincipal() {
         initComponents();
         
@@ -51,9 +63,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        lblimagen = new javax.swing.JTextField();
+        txtrutaimagen = new javax.swing.JTextField();
         btExplorar = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        lblimagen = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbusuarios = new javax.swing.JTable();
@@ -152,9 +164,9 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jLabel7.setText("Imagen Seleccionada");
 
-        lblimagen.addActionListener(new java.awt.event.ActionListener() {
+        txtrutaimagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblimagenActionPerformed(evt);
+                txtrutaimagenActionPerformed(evt);
             }
         });
 
@@ -172,9 +184,9 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblimagen))
+                    .addComponent(txtrutaimagen)
+                    .addComponent(lblimagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(btExplorar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -187,9 +199,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblimagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtrutaimagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addComponent(lblimagen, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -270,12 +282,38 @@ public class FormPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btExplorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExplorarActionPerformed
-        // TODO add your handling code here:
+      
+        JFileChooser fileChooser = new JFileChooser();
+        
+        int result = fileChooser.showOpenDialog(null);
+        if (result== JFileChooser.APPROVE_OPTION) {
+        
+            archivoseleccionado = fileChooser.getSelectedFile();
+            txtrutaimagen.setText(archivoseleccionado.getName());
+            
+            try {
+             Image img =ImageIO.read(archivoseleccionado);
+             ImageIcon originalIcon = new ImageIcon(img);
+             
+             int lblanchura = lblimagen.getWidth();
+             int lblaltura= lblimagen.getHeight();
+             
+             Image ImagenEscalada = originalIcon.getImage().getScaledInstance(lblanchura, lblaltura, Image.SCALE_SMOOTH);
+             lblimagen.setIcon(new ImageIcon(ImagenEscalada));
+            
+                   
+            }catch (Exception e) {
+            
+                JOptionPane.showMessageDialog(null,"error al mostrar imagen");
+            }
+            
+        }
+        
     }//GEN-LAST:event_btExplorarActionPerformed
 
-    private void lblimagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblimagenActionPerformed
+    private void txtrutaimagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrutaimagenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblimagenActionPerformed
+    }//GEN-LAST:event_txtrutaimagenActionPerformed
 
     private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
         // TODO add your handling code here:
@@ -331,17 +369,17 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField lblimagen;
+    private javax.swing.JLabel lblimagen;
     private javax.swing.JTable tbusuarios;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtid;
+    private javax.swing.JTextField txtrutaimagen;
     // End of variables declaration//GEN-END:variables
 }

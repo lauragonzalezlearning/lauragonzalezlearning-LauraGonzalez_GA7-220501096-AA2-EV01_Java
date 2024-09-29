@@ -240,8 +240,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel8" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="jLabel7" max="32767" attributes="0"/>
+                          <Component id="txtrutaimagen" alignment="0" max="32767" attributes="0"/>
                           <Component id="lblimagen" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -259,9 +259,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblimagen" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtrutaimagen" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel8" pref="60" max="32767" attributes="0"/>
+                      <Component id="lblimagen" pref="60" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -273,9 +273,9 @@
                 <Property name="text" type="java.lang.String" value="Imagen Seleccionada"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="lblimagen">
+            <Component class="javax.swing.JTextField" name="txtrutaimagen">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblimagenActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtrutaimagenActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btExplorar">
@@ -286,7 +286,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btExplorarActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel8">
+            <Component class="javax.swing.JLabel" name="lblimagen">
             </Component>
           </SubComponents>
         </Container>
